@@ -1,0 +1,153 @@
+import java.util.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+public class CalculatorSimple implements ActionListener
+{
+ JFrame frames;
+ Label Label1,Label2,Label3,Label4;
+ Button Button1,Button2,Button3,Button4,Button5,Button6;
+ TextField TextField1,TextField2,TextField3;
+ String resulting="";
+ CalculatorSimple()
+ {
+  frames=new JFrame("Calculator Simple");
+  Label1=new Label (" First Number: ");
+     Label1.setBounds(50,50,150,50);
+     Font fontBold1 = new Font("Times New Roman", Font.BOLD, 20);
+  Label1.setFont(fontBold1);
+  
+  TextField1 = new TextField();
+  TextField1.setBounds(250,60,150,30);
+  frames.add(TextField1);
+  frames.add(Label1);
+  
+  Label2=new Label (" Second Number: ");
+     Label2.setBounds(50,100,200,50);
+     Font fontBold2 = new Font("Times New Roman", Font.BOLD, 20);
+  Label2.setFont(fontBold2);
+  
+  TextField2 = new TextField();
+  TextField2.setBounds(250,110,150,30);
+  frames.add(TextField2);
+  frames.add(Label2);
+  
+  Label3=new Label (" Result: ");
+     Label3.setBounds(50,150,80,50);
+     Font fontBold3 = new Font("Times New Roman", Font.BOLD, 20);
+  Label3.setFont(fontBold3);
+  frames.add(Label3);
+  
+  Button1=new Button(" ADD ");
+  Button1.setBounds(80,250,130,30);
+  frames.add(Button1);
+  
+  Font fontBold4 = new Font("Times New Roman", Font.BOLD, 15);
+  Button1.setFont(fontBold4);
+  
+  Button1.addActionListener(this);
+  
+  Button2=new Button(" SUBTRACT ");
+  Button2.setBounds(250,250,130,30);
+  frames.add(Button1);
+  
+  Font fontBold5 = new Font("Times New Roman", Font.BOLD, 15);
+  Button2.setFont(fontBold5);
+  
+  Button2.addActionListener(this);
+  
+  Button3=new Button(" MULTIPLY ");
+  Button3.setBounds(80,320,130,30);
+  frames.add(Button2);
+  
+  Font fontBold6 = new Font("Times New Roman", Font.BOLD, 15);
+  Button3.setFont(fontBold6);
+  
+  Button3.addActionListener(this);
+  
+  Button4=new Button(" DIVIDE ");
+  Button4.setBounds(250,320,130,30);
+  frames.add(Button4);
+  
+  Font fontBold7 = new Font("Times New Roman", Font.BOLD, 15);
+  Button4.setFont(fontBold7);
+  
+  Button4.addActionListener(this);
+  
+  Button5=new Button(" RESET ");
+  Button5.setBounds(80,390,130,30);
+  frames.add(Button5);
+  
+  Font fontBold8 = new Font("Times New Roman", Font.BOLD, 15);
+  Button5.setFont(fontBold8);
+  
+  Button5.addActionListener(this);
+  
+  Button6=new Button(" QUIT ");
+  Button6.setBounds(250,390,130,30);
+  frames.add(Button6);
+  
+  Font fontBold9 = new Font("Times New Roman", Font.BOLD, 15);
+  Button6.setFont(fontBold9);
+  
+  Button6.addActionListener(this);
+  
+  TextField3=new TextField ();
+     TextField3.setBounds(130,160,300,30);
+     Font fontBold0 = new Font("Times New Roman", Font.BOLD, 20);
+  TextField3.setFont(fontBold0);
+  frames.add(TextField3);
+  
+  frames.setLayout(null); 
+  frames.setSize(500,600);  
+  frames.setVisible(true);
+ }
+ @Override
+ public void actionPerformed(ActionEvent e) 
+ {
+  if(e.getSource()==Button1)
+  {
+   resulting=Double.parseDouble(TextField1.getText())+Double.parseDouble(TextField2.getText())+"";
+   TextField3.setText(resulting);
+  }
+  else if(e.getSource()==Button2)
+  {
+   resulting=Double.parseDouble(TextField1.getText())-Double.parseDouble(TextField2.getText())+"";
+   TextField3.setText(resulting);
+  }
+  else if(e.getSource()==Button3)
+  {
+   resulting=Double.parseDouble(TextField1.getText())*Double.parseDouble(TextField2.getText())+"";
+   TextField3.setText(resulting);
+  }
+  else if(e.getSource()==Button4)
+  {
+   resulting=Double.parseDouble(TextField1.getText())/Double.parseDouble(TextField2.getText())+"";
+   TextField3.setText(resulting);
+   
+  }
+  else if(e.getSource()==Button5)
+  {
+   TextField1.setText("");
+   TextField2.setText("");
+   TextField3.setText("");
+   
+  }
+  else if(e.getSource()==Button6)
+  {
+   JOptionPane.showMessageDialog(frames,"This will terminate the program!.");
+   frames.dispose();
+  }
+ }
+ public static void main(String args[])
+ {
+  new CalculatorSimple();
+ }
+}
